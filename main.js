@@ -9,12 +9,13 @@ if (args[0] && args[1]) {
                 console.log("Onvif connect errored. Check username and password on cam",num)
             } else {
                 find(cam.onvif.hostname).then(device => {
+                    Device.build(device.onvif)
                     console.log("======================")
                     console.log(cam.onvif.deviceInformation.manufacturer, cam.onvif.deviceInformation.model)
                     console.log("IP:", cam.onvif.hostname)
                     console.log("MAC:", device.mac)
-                    console.log("RTSP URI:",cam.onvif.streams[0].streamUri)
-                    console.log("Resolution:",cam.onvif.streams[0].resolution)
+                    console.log("RTSP URI:",cam.onvif.profiles[0].streamUri)
+                    console.log("Resolution:",cam.onvif.videoSources[0].resolution)
                 })
             }
         })
