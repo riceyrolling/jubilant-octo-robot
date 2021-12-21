@@ -124,7 +124,7 @@ var Device = /** @class */ (function () {
             });
         });
     };
-    Device.discover = function (u, p, interface) {
+    Device.discover = function (u, p, interf) {
         if (u === void 0) { u = null; }
         if (p === void 0) { p = null; }
         return __awaiter(this, void 0, void 0, function () {
@@ -136,7 +136,7 @@ var Device = /** @class */ (function () {
                             reject();
                         });
                         onvif.Discovery.probe({
-                            device: interface
+                            device: interf
                         }, function (err, cams) { return __awaiter(_this, void 0, void 0, function () {
                             var camsDetailed;
                             return __generator(this, function (_a) {
