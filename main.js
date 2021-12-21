@@ -13,8 +13,8 @@ if (args[0] && args[1]) {
                     console.log(cam.onvif.deviceInformation.manufacturer, cam.onvif.deviceInformation.model)
                     console.log("IP:", cam.onvif.hostname)
                     console.log("MAC:", device.mac)
-                    console.log("RTSP URI:",cam.streams[0].streamUri)
-                    console.log("Resolution:",cam.streams[0].resolution)
+                    console.log("RTSP URI:",cam.onvif.streams[0].streamUri)
+                    console.log("Resolution:",cam.onvif.streams[0].resolution)
                 })
             }
         })
