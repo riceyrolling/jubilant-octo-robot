@@ -20,5 +20,10 @@
     "local-devices": "^3.2.0",
     "mac-lookup": "^1.0.1",
     "onvif": "^0.6.5"
-  }
+  },
+  "pkg": {
+    "targets": [ "node14-linux-armv7" ],
+    "outputPath": "dist"
+  },
+  "bin": "main.js"
 }
