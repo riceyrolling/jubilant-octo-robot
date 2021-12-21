@@ -10,8 +10,8 @@
     "type": "git",
     "url": "git+https://github.com/riceyrolling/jubilant-octo-robot.git"
   },
-  "author": "",
-  "license": "ISC",
+  "author": "Caleb Rocca",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/riceyrolling/jubilant-octo-robot/issues"
   },
