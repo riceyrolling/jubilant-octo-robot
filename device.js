@@ -107,8 +107,6 @@ var Device = /** @class */ (function () {
                     case 1:
                         onvifRes = _a.sent();
                         if (onvifRes instanceof Error) {
-                            console.log("Onvif for cam " + displayPos + "returned error: " + onvifRes.message);
-                            console.log(onvifRes);
                             return [2 /*return*/, {
                                     error: onvifRes.message,
                                     position: displayPos
@@ -126,27 +124,24 @@ var Device = /** @class */ (function () {
             });
         });
     };
-    Device.discover = function (u, p) {
+    Device.discover = function (u, p, interface) {
         if (u === void 0) { u = null; }
         if (p === void 0) { p = null; }
         return __awaiter(this, void 0, void 0, function () {
             var _this = this;
             return __generator(this, function (_a) {
-                console.log(os.networkInterfaces());
                 // Onvif Device discovery.
                 return [2 /*return*/, new Promise(function (resolve, reject) {
                         onvif.Discovery.on('error', function (err, xml) {
-                            console.log('Discovery error ' + err);
                             reject();
                         });
                         onvif.Discovery.probe({
-                            device: "Wi-Fi"
+                            device: interface
                         }, function (err, cams) { return __awaiter(_this, void 0, void 0, function () {
                             var camsDetailed;
                             return __generator(this, function (_a) {
                                 switch (_a.label) {
                                     case 0:
-                                        console.log("Started ONVIF Probe callback for", cams.length, "devices");
                                         if (!(u != null && p != null)) return [3 /*break*/, 2];
                                         return [4 /*yield*/, cams.map(function (cam) {
                                                 return __awaiter(this, void 0, void 0, function () {
@@ -154,7 +149,6 @@ var Device = /** @class */ (function () {
                                                     return __generator(this, function (_b) {
                                                         switch (_b.label) {
                                                             case 0:
-                                                                console.log("TRYING CAM");
                                                                 cam.username = u;
                                                                 cam.password = p;
                                                                 _a = cam;
@@ -168,14 +162,12 @@ var Device = /** @class */ (function () {
                                             })];
                                     case 1:
                                         camsDetailed = _a.sent();
-                                        console.log(camsDetailed);
                                         _a.label = 2;
                                     case 2:
                                         // function will be called only after timeout (5 sec by default)
                                         if (err) {
                                             throw err;
                                         }
-                                        console.log("Found " + cams.length + " devices.");
                                         Promise.all(camsDetailed).then(function (values) {
                                             resolve(values);
                                         });
@@ -216,7 +208,6 @@ var Device = /** @class */ (function () {
     };
     Device.init = function (socket) {
         socket.on("discover", function (answer) {
-            console.log("Discover cameras received.");
             return Device.discover();
         });
     };
@@ -245,7 +236,6 @@ var onvifCam = function (host, u, p) {
                                 protocol: 'RTSP'
                             }, function (err, stream) {
                                 if (err) {
-                                    console.log(err);
                                 }
                                 getStreamUri(stream.uri);
                             });
@@ -254,7 +244,6 @@ var onvifCam = function (host, u, p) {
                     deviceInfo = new Promise(function (getDeviceInfo) {
                         _this.getDeviceInformation(function (err, info) {
                             if (err) {
-                                console.log(err);
                             }
                             getDeviceInfo(info);
                         });
@@ -289,6 +278,5 @@ function networkScan() {
             });
         });
     });
-    console.log(netlist);
 }
 module.exports = Device;

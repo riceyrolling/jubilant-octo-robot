@@ -2,14 +2,15 @@ const Device = require('./device.js');
 const args = process.argv.slice(2);
 const find = require('local-devices');
 
+const interface = args[2] | "eth0"
+
 if (args[0] && args[1]) {
-    Device.discover(args[0], args[1]).then(async (cams) => {
+    Device.discover(args[0], args[1], interface).then(async (cams) => {
         await cams.forEach(async (cam,num) => {
             if (cam.onvif instanceof Error) { 
                 console.log("Onvif connect errored. Check username and password on cam",num)
             } else {
                 find(cam.onvif.hostname).then(device => {
-                    Device.build(device.onvif)
                     console.log("======================")
                     console.log(cam.onvif.deviceInformation.manufacturer, cam.onvif.deviceInformation.model)
                     console.log("IP:", cam.onvif.hostname)
@@ -21,5 +22,5 @@ if (args[0] && args[1]) {
         })
     })
 } else {
-    console.log("Usage: main.js [username] [password]")
+    console.log("Usage: node main.js [username] [password] {interface}")
 }
