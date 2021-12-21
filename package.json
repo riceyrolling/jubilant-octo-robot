@@ -1,0 +1,24 @@
+{
+  "name": "jubilant-octo-robot",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/riceyrolling/jubilant-octo-robot.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/riceyrolling/jubilant-octo-robot/issues"
+  },
+  "homepage": "https://github.com/riceyrolling/jubilant-octo-robot#readme",
+  "dependencies": {
+    "local-devices": "^3.2.0",
+    "mac-lookup": "^1.0.1",
+    "onvif": "^0.6.5"
+  }
+}
