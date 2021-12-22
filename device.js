@@ -236,9 +236,9 @@ var onvifCam = function (host, u, p) {
                                 protocol: 'RTSP'
                             }, function (err, stream) {
                                 if (err) {
-                                }
-                                getStreamUri(stream.uri);
-                            });
+                                } else {
+                                    getStreamUri(stream.uri);
+                                });
                         });
                     });
                     deviceInfo = new Promise(function (getDeviceInfo) {
