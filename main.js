@@ -8,7 +8,7 @@ if (args[0] && args[1]) {
     Device.discover(args[0], args[1], interf).then(async (cams) => {
         await cams.forEach(async (cam,num) => {
             if (cam.onvif instanceof Error) { 
-                console.log("Onvif connect errored. Check username and password on cam",num)
+                console.log("Onvif connect errored. Check username and password on cam",cam.hostname)
             } else {
                 find(cam.onvif.hostname).then(device => {
                     console.log("======================")
