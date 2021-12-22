@@ -238,7 +238,7 @@ var onvifCam = function (host, u, p) {
                                 if (err) {
                                 } else {
                                     getStreamUri(stream.uri);
-                                });
+                                }
                         });
                     });
                     deviceInfo = new Promise(function (getDeviceInfo) {
